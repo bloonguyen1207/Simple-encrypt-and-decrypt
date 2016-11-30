@@ -3,6 +3,16 @@ import random
 import json
 
 
+def checkfrequency(file):
+    alphabet = """ABCDEFGHIJKLMNOPQRSTUVWXYZ .,:;()-!?$'"\n0123456789"""
+    frequency = {}
+    with open(file, 'r') as f:
+        message = f.read().rstrip().strip("<>")
+    for i in alphabet:
+        frequency[i] = message.count(i)
+    return frequency
+
+
 def genkey(file):
     alphabet = list("""ABCDEFGHIJKLMNOPQRSTUVWXYZ .,:;()-!?$'"\n0123456789""")
     alphabet_cp = alphabet.copy()
@@ -45,8 +55,11 @@ def decrypt(file, key_file):
             message_dec += reverse_key[i]
     return message_dec
 
+
 if sys.argv[1] == 'g':
     genkey(sys.argv[2])
+elif sys.argv[1] == 'f':
+    print(checkfrequency(sys.argv[2]))
 elif sys.argv[1] == 'e':
     print(encrypt(sys.argv[2], sys.argv[3]))
 elif sys.argv[1] == 'd':
