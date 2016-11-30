@@ -24,5 +24,7 @@ def decrypt(file, key):
 
 if sys.argv[1] == 'e':
     print(encrypt(sys.argv[2], sys.argv[3]))
-if sys.argv[1] == 'd':
+elif sys.argv[1] == 'd':
     print(decrypt(sys.argv[2], int(sys.argv[3])))
+else:
+    print("Invalid input.")
