@@ -1,3 +1,16 @@
+Check frequency with function in subts.py and then replace characters.
+In order to not replace wrong characters. Use lowercase letters to replace uppercase letters
+Message length: 627
+Frequency:
+{'(': 24, "'": 49, 'M': 0, 'A': 36, 'J': 5, 'B': 19, 'R': 34, 'N': 15, 'W': 0, 'G': 18, 'H': 0, 'D': 0,
+'I': 12, 'O': 1, 'C': 0, '9': 0, 'X': 0, '-': 2, '3': 0, '.': 0, '0': 3, 'P': 10, 'Q': 2, ';': 46,
+'L': 36, 'Y': 32, '2': 0, '5': 2, ')': 12, '$': 55, ',': 22, 'E': 11, '6': 0, '?': 1, '\n': 0, 'K': 1,
+'F': 1, 'V': 18, 'U': 4, ' ': 0, '7': 0, 'Z': 35, 'T': 0, ':': 10, '4': 1, '8': 0, '"': 10, '!': 0,
+'1': 95, 'S': 5}
+Most frequent is space, next is e, and so on. Based on English characters frequency
+Reference: https://en.wikipedia.org/wiki/Letter_frequency
+
+Frequency: Letter - Decrypted
 95: 1 - " "
 55: $ - e
 49: ' - a

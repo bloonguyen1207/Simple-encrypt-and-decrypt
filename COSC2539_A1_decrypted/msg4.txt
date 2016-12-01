@@ -1,3 +1,6 @@
 >dystopian corporate surveillance threats today come at us from all directions. companies offer "always-on" devices that listen for our voice commands, and marketers follow us around the web to create personalized user profiles so they can (maybe) show us ads we'll actually click. now marketers have been experimenting with combining those web-based and audio approaches to track consumers in another disturbingly science fictional way: with audio signals your phone can hear, but you can't. and though you probably have no idea that dog whistle marketing is going on, researchers are already offering ways to protect yourself.<
 
+Article:
 https://www.wired.com/2016/11/block-ultrasonic-signals-didnt-know-tracking/
+
+Detailed decrypt progress is in msg4_key.txt

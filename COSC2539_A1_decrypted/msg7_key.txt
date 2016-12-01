@@ -1,0 +1,47 @@
+Check frequency with function in subts.py and then replace characters.
+Since there is character that maps with space, replace spaces in cipher text with a character that have
+never appear in the message and start decrypt
+Message length: 814
+Frequency:
+{':': 0, 'B': 1, ';': 2, '7': 0, '4': 52, 'Q': 18, 'Z': 131, '?': 56, '!': 25, '1': 1, '-': 0, '$': 0, '3': 48,
+ 'E': 0, 'D': 14, 'I': 83, ',': 0, 'J': 0, 'C': 0, '.': 0, "'": 15, 'A': 6, 'P': 12, 'K': 18, 'X': 12, '6': 12,
+ 'U': 0, ')': 0, 'G': 2, 'V': 14, ' ': 33, 'R': 24, '2': 1, 'Y': 10, '8': 56, 'F': 8, '\n': 0, 'H': 4, 'N': 2,
+ 'W': 35, 'O': 0, 'M': 0, '(': 42, 'S': 49, '5': 0, 'T': 0, '"': 0, '0': 1, '9': 12, 'L': 15}
+
+Most frequent is space, next is e, and so on. Based on English characters frequency
+Reference: https://en.wikipedia.org/wiki/Letter_frequency
+
+Frequency: Letter - Decrypted
+131 : Z - SPACE
+83  : I - e
+56  : ? - a
+56  : 8 - o
+52  : 4 - t
+49  : S - n
+48  : 3 - i
+42  : ( - r
+35  : W - s
+33  : SPACE (replaced with ':') - l
+25  : ! - h
+24  : R - c
+18  : Q - d
+18  : K - m
+15  : ' - p
+15  : L - f
+14  : D - u
+14  : V - v
+12  : P - w
+12  : X - ,
+12  : 6 - g
+12  : 9 - b
+10  : Y - y
+8   : F - .
+6   : A - -
+4   : H - k
+2   : ; - '
+2   : G - z
+2   : N - \n
+1   : B - 6
+1   : 1 - 5
+1   : 2 - x
+1   : 0 - 2

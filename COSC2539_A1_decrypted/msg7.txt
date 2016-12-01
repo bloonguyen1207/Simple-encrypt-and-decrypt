@@ -1,0 +1,8 @@
+i live in one of the most wired parts of the united states--the san francisco bay area--but for the presidential election, i've already voted by mail. on a piece of paper. from the comfort of my living room. between folks like me who vote by mail and everyone else who votes by marking paper in some way, we comprise about two-thirds of all american voters. approximately 25 percent of all americans, however, will use paperless and electronic voting machines to cast their ballots on november 6.
+
+around the world though, these percentages don't hold. an increasing number of countries are beginning to tackle e-voting with gusto. estonia, switzerland, spain, brazil, australia, india, canada, and a handful of other countries have all held elections through the use of electronic voting machines in recent years.
+
+Article:
+http://arstechnica.com/features/2016/11/internet-based-and-open-source-how-e-voting-is-working-around-the-globe/
+
+Detailed decrypt progress is in msg7_key.txt
