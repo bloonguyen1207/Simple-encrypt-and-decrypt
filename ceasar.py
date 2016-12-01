@@ -22,7 +22,20 @@ def encrypt(file, key):
 def decrypt(file, key):
     return encrypt(file, -key)
 
-if sys.argv[1] == 'e':
-    print(encrypt(sys.argv[2], sys.argv[3]))
-if sys.argv[1] == 'd':
-    print(decrypt(sys.argv[2], int(sys.argv[3])))
+mode = sys.argv[1]
+filename = sys.argv[2]
+key = sys.argv[3]
+
+if mode == 'e':
+    print(encrypt(filename, key))
+elif mode == 'd':
+    if key == "unknown":
+        for i in range(50):
+            key = i
+            print(decrypt(filename, int(key)))
+    elif key.isdigit():
+        print(decrypt(filename, int(key)))
+    else:
+        print("Invalid key. Please try again.")
+else:
+    print("Invalid input.")
