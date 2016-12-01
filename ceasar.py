@@ -22,6 +22,7 @@ def encrypt(file, key):
 def decrypt(file, key):
     return encrypt(file, -key)
 
+
 mode = sys.argv[1]
 filename = sys.argv[2]
 key = sys.argv[3]
@@ -30,9 +31,13 @@ if mode == 'e':
     print(encrypt(filename, key))
 elif mode == 'd':
     if key == "unknown":
-        for i in range(50):
+        for i in range(1, 50):
             key = i
+            print("----------------------------------------------")
+            print("Key: " + str(key))
+            print("----------------------------------------------")
             print(decrypt(filename, int(key)))
+            print("----------------------------------------------")
     elif key.isdigit():
         print(decrypt(filename, int(key)))
     else:
