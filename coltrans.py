@@ -37,7 +37,7 @@ def columnar_decryption(in_file_name, int_key):
     in_file = open(in_file_name, 'r')
     message = ""
 
-    enc_mes = in_file.read()
+    enc_mes = in_file.read().strip("<>")
 
     rows = len(enc_mes) // int_key
 
