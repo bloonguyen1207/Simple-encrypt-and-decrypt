@@ -11,7 +11,7 @@ Most frequent is space, next is e, and so on. Based on English characters freque
 Reference: https://en.wikipedia.org/wiki/Letter_frequency
 
 Frequency: Letter - Decrypted
-95: 1 - " "
+95: 1 - SPACE
 55: $ - e
 49: ' - a
 46: ; - o
