@@ -1,6 +1,6 @@
-import os.path
 import string
 import sys
+# import ceasar
 
 
 def check_int_input(a_string):
@@ -37,7 +37,7 @@ def columnar_decryption(in_file_name, int_key):
     in_file = open(in_file_name, 'r')
     message = ""
 
-    enc_mes = in_file.read().strip("<>")
+    enc_mes = in_file.read().rstrip().strip('<>')
 
     rows = len(enc_mes) // int_key
 
@@ -47,7 +47,7 @@ def columnar_decryption(in_file_name, int_key):
             message += enc_mes[ch_index]
 
     in_file.close()
-    print(message, end='')
+    return message
 
 
 def col_dec_without_key(in_file_name):
@@ -81,6 +81,22 @@ def col_dec_without_key(in_file_name):
     in_file.close()
 
 
+# this function is used to decrypt message 6
+# in order to use this function:
+# + comment the main function of "ceasar.py" and this file
+# + uncomment this function, "import ceasar", and "decrypt_message6(sys.argv[1])"
+# + the argument only contains the name of the encrypt file.
+
+# def decrypt_message6(in_file_name):
+#     in_file = open(in_file_name, 'r')
+#     enc_mes = in_file.read().strip("<>")
+#     for i in range(1, len(enc_mes)):
+#         print("---key: " + str(i) + "---")
+#         message = columnar_decryption(in_file_name, i)
+#         message = ceasar.decrypt_with_string(message, i)
+#         print(message)
+
+
 mode = sys.argv[1]
 file_name = sys.argv[2]
 str_key = sys.argv[3]
@@ -91,7 +107,10 @@ if str_key != "unknown" and check_int_input(str_key):
 if mode == "e":
     columnar_encryption(file_name, key)
 elif mode == "d":
+    # if key is "unknown", the program will try all appropriate keys
     if str_key == "unknown":
         col_dec_without_key(file_name)
     else:
-        columnar_decryption(file_name, key)
+        print(columnar_decryption(file_name, key), end='')
+
+# decrypt_message6(sys.argv[1])

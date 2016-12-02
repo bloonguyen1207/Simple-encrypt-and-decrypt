@@ -1,4 +1,3 @@
-import os.path
 import string
 import random
 import sys
@@ -15,7 +14,7 @@ def key_generator(key_file_name, length):
     str_alphabet = """ABCDEFGHIJKLMNOPQRSTUVWXYZ .,:;()-!?$'"\n0123456789"""
     in_file = open(key_file_name, 'w')
     for i in range(length):
-        ch_index = random.randint(0, len(str_alphabet) - 1)
+        ch_index = random.randint(0, len(str_alphabet) - 1)  # randint return n from a <= n <= b
         in_file.write(str_alphabet[ch_index])
     in_file.close()
 
@@ -31,6 +30,7 @@ def vernam_encryption(in_file_name, key_file_name, offset):
 
     length_message = len(message)
 
+    # regenerate key if length of key is less than length of the message
     if length_message > len(key):
         key_generator(key_file_name, length_message)
         key_file.seek(0)
@@ -38,6 +38,7 @@ def vernam_encryption(in_file_name, key_file_name, offset):
 
     length_key = len(key)
 
+    # shift all the key by offset to make it easier to code
     if length_message <= length_key - offset:
         actual_key = key[offset: offset + length_message]
     else:
@@ -66,15 +67,16 @@ def vernam_decryption(in_file_name, key_file_name, offset):
     enc_mes = in_file.read()
     enc_mes = enc_mes[enc_mes.index('>') + 1: enc_mes.index('<')]  # remove > <
     key = key_file.read()
-    key = key.upper()
     message = ""
 
     length_message = len(enc_mes)
     length_key = len(key)
 
+    # length of key must larger or equal to length of message
     if length_message > length_key:
         print("Wrong key")
 
+    # shift all the key by offset to make it easier to code
     if length_message <= length_key - offset:
         actual_key = key[offset: offset + length_message]
     else:
@@ -82,6 +84,7 @@ def vernam_decryption(in_file_name, key_file_name, offset):
         actual_key = key[offset:] + key[:temp]
 
     for i in range(length_message):
+        # in case the character is not found in the str_alphabet, it will be replaced with '='
         if enc_mes[i] not in str_alphabet or actual_key[i] not in str_alphabet:
             message += '='
             continue
@@ -94,63 +97,17 @@ def vernam_decryption(in_file_name, key_file_name, offset):
     print(message, end='')
 
 
-def vernam_find_key(enc_file_name, plain_file_name, key_file_name):
-    str_alphabet = """ABCDEFGHIJKLMNOPQRSTUVWXYZ .,:;()-!?$'"\n0123456789"""
-    length_alphabet = len(str_alphabet)
-    enc_file = open(enc_file_name, 'r')
-    plain_file = open(plain_file_name, 'r')
-    key_file = open(key_file_name, 'r')
-    enc_mes = enc_file.read()
-    enc_mes = enc_mes[enc_mes.index('>') + 1: enc_mes.index('<')]  # remove > <
-    plain = plain_file.read()
-    plain = plain.upper()
-    temp_key = key_file.read()
-    key = ""
-    temp = ""
-
-    length_enc = len(enc_mes)
-    length_plain = len(plain)
-
-    if length_enc > length_plain:
-        plain = plain[:] + ' ' * (length_enc - length_plain)
-
-    for i in range(length_enc):
-        if enc_mes[i] not in str_alphabet or plain[i] not in str_alphabet:
-            temp = key[:]
-            key += str(i)
-            continue
-        ch_index = (str_alphabet.index(enc_mes[i]) - str_alphabet.index(plain[i])) % length_alphabet
-        key += str_alphabet[ch_index]
-
-    enc_file.close()
-    plain_file.close()
-
-    print(temp in temp_key)
-    print(key, end='')
-
-
-mode = sys.argv[1]
-file_name = sys.argv[2]
-key_name = sys.argv[3]
-str_n = sys.argv[4]
-n = 1
-if mode != "g" and not os.path.isfile(file_name):
-    print("Wrong input")
-if not os.path.isfile(key_name):
-    print("Wrong input")
-if check_int_input(str_n):
-    n = int(str_n)
-else:
-    print("Wrong input")
-if mode == "e":
-    vernam_encryption(file_name, key_name, n)
-elif mode == "d":
-    vernam_decryption(file_name, key_name, n)
-elif mode == "g":
-    key_generator(key_name, n)
-
-# file_enc = sys.argv[1]
-# file_plain = sys.argv[2]
-# file_key = sys.argv[3]
-#
-# vernam_find_key(file_enc, file_plain, file_key)
+if sys.argv[1] == 'g':      # Generate key
+    if check_int_input(sys.argv[3]):
+        n = int(sys.argv[3])
+        key_generator(sys.argv[2], n)
+elif sys.argv[1] == 'e':    # Encrypt
+    if check_int_input(sys.argv[4]):
+        n = int(sys.argv[4])
+        vernam_encryption(sys.argv[2], sys.argv[3], n)
+elif sys.argv[1] == 'd':    # Decrypt
+    if check_int_input(sys.argv[4]):
+        n = int(sys.argv[4])
+        vernam_decryption(sys.argv[2], sys.argv[3], n)
+else:                       # Mode validation
+    print("Invalid input.")
