@@ -13,5 +13,5 @@ Beside the default functions, we added two new modes, one in Columnar Transposit
 * For ex: python3 coltrans.py d cipher_file unknown
 
 ## Random Substitution ##
-* We create a new mode to check frequency of characters in a cipher text. The input includes mode "f" and name of the cipher's file.
+* We create a new mode to check frequency of characters in a cipher text. The input includes mode "f" and name of the cipher file.
 * For ex: python3 subst.py f cipher_file
