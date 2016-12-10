@@ -1,4 +1,6 @@
+import os
 import sys
+# import coltrans
 
 
 # Encrypt
@@ -40,33 +42,22 @@ def decrypt(file, key):
 
 
 # this function is used to decrypt message 6
-def encrypt_with_string(message, key):
-    # It cannot read /n properly so I don't use it
-    # with open('alphabet.txt', 'r') as af:
-    #     alpha = af.read().rstrip()
+# in order to use this function:
+# + comment the main function of "coltrans.py" and this file
+# + uncomment this function, "import coltrans", and "decrypt_message6(sys.argv[1])"
+# + the argument only contains the name of the encrypt file.
 
-    # Alphabet
-    alpha = """ABCDEFGHIJKLMNOPQRSTUVWXYZ .,:;()-!?$'"\n0123456789"""
-
-    message_enc = ""
-    # Loop through each character in message and check with alphabet
-    for c in range(len(message)):
-        # If character is in alphabet, get the index of that character in alphabet
-        if message[c] in alpha:
-            index = alpha.find(message[c])
-
-            # Get sum of character index with key then mod the length of alphabet
-            # Then add the character at the computed index to the encrypted message
-            message_enc += alpha[(index + int(key)) % len(alpha)]
-        else:
-            print(message[c] + " is not in alphabet.")
-
-    return message_enc
-
-
-# this function is used to decrypt message 6
-def decrypt_with_string(message, key):
-    return encrypt_with_string(message, -key)
+# def decrypt_message6(in_file_name):
+#     alpha = """ABCDEFGHIJKLMNOPQRSTUVWXYZ .,:;()-!?$'"\n0123456789"""
+#     for i in range(1, len(alpha)):
+#         print("---key: " + str(i) + "---")
+#         message = decrypt(in_file_name, i)
+#         temp_file = open("temp.txt", 'w')
+#         temp_file.write(message)
+#         temp_file.close()
+#         message = coltrans.columnar_decryption("temp.txt", i)
+#         os.remove("temp.txt")
+#         print(message)
 
 
 mode = sys.argv[1]
@@ -92,3 +83,5 @@ elif mode == 'd':   # Decrypt
         print("Invalid key. Please try again.")
 else:               # Mode validation
     print("Invalid input.")
+
+# decrypt_message6(sys.argv[1])
