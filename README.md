@@ -1,6 +1,6 @@
 # README #
 
-### Overview ###
+## Overview ##
 This project has programs to decrypt and encrypt message using 4 types of cryptography, running on python 3.5:
 
 * Vernam
@@ -8,6 +8,7 @@ This project has programs to decrypt and encrypt message using 4 types of crypto
 * Ceasar Cipher
 * Random Substitution
 
+## Changes and updates ##
 Beside the default functions, we added one new mode in Random Subtitutions and modified the decrypt functions of columnar transposition and ceasar cipher.
 
 ### Random Substitution ###
